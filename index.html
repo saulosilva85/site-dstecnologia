@@ -1,174 +1,294 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>DS Tecnologia</title>
-<meta name="description" content="DS Tecnologia desenvolve produtos digitais simples e úteis para o dia a dia. Conheça o Contas Fixas, nossa ferramenta de controle de despesas.">
-<link rel="icon" href="assets/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --paper:#f5f8fc;--panel:#ffffff;--line:#dde5f0;
-  --ink:#0d1726;--text:#16233a;--muted:#5c6b82;
-  --blue-deep:#0d3a8f;--blue:#1565c0;--blue-light:#2ea3e8;
-  --accent-grad:linear-gradient(135deg,#1e88e5 0%,#29b6f6 100%);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#0a111d;--panel:#101a2b;--line:#1f2d45;--text:#e7ecf5;--muted:#8d9ab0;
-  }
-}
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{margin:0;background:var(--paper);color:var(--text);font-family:"Inter",-apple-system,sans-serif;line-height:1.6;}
-a{color:inherit;text-decoration:none;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
-
-header{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--paper) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
-.brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:18px;}
-.brand img{width:36px;height:36px;border-radius:50%;display:block;}
-.navlinks{display:flex;gap:28px;font-size:14px;color:var(--muted);}
-.navlinks a:hover{color:var(--blue);}
-.nav-cta{background:var(--accent-grad);color:#fff;padding:9px 18px;border-radius:6px;font-size:14px;font-weight:600;white-space:nowrap;}
-.nav-cta:hover{opacity:.92;}
-@media(max-width:640px){
-  .brand{font-size:16px;white-space:nowrap;}
-  .navlinks{display:none;}
-  .nav-cta{padding:8px 14px;font-size:13px;}
-}
-
-.hero{padding:76px 0 64px;text-align:center;}
-.eyebrow{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:color-mix(in srgb, var(--blue) 10%, transparent);padding:6px 14px;border-radius:20px;margin-bottom:22px;font-weight:600;}
-.hero h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;font-weight:700;}
-.hero h1 span{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-.hero p{max-width:560px;margin:0 auto;color:var(--muted);font-size:17px;}
-
-section{padding:64px 0;}
-.section-head{text-align:center;max-width:560px;margin:0 auto 40px;}
-.section-head .tag{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:8px;display:block;}
-.section-head h2{font-family:"Space Grotesk",sans-serif;font-size:28px;margin:0 0 10px;}
-.section-head p{color:var(--muted);font-size:15px;margin:0;}
-
-.products{display:grid;grid-template-columns:1fr;gap:20px;}
-@media(min-width:640px){.products{grid-template-columns:repeat(2,1fr);}}
-.product-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:30px;display:flex;flex-direction:column;gap:14px;transition:transform .15s ease, box-shadow .15s ease;}
-.product-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(13,58,143,.12);}
-.product-icon{width:48px;height:48px;border-radius:10px;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;font-size:22px;}
-.product-card h3{font-family:"Space Grotesk",sans-serif;font-size:19px;margin:0;}
-.product-card p{color:var(--muted);font-size:14.5px;margin:0;flex:1;}
-.product-price{font-size:13px;color:var(--blue);font-weight:600;}
-.product-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--blue);margin-top:4px;}
-.product-link:hover{color:var(--blue-deep);}
-.product-card.soon{opacity:.75;border-style:dashed;}
-.badge-soon{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:color-mix(in srgb, var(--muted) 14%, transparent);padding:4px 10px;border-radius:20px;align-self:flex-start;}
-
-.about{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.about .wrap{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;}
-@media(min-width:720px){.about .wrap{grid-template-columns:1fr 1fr;}}
-.about h2{font-family:"Space Grotesk",sans-serif;font-size:26px;margin:0 0 14px;}
-.about p{color:var(--muted);font-size:15px;margin:0 0 12px;}
-.values{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.value{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px;}
-.value strong{display:block;font-size:14px;margin-bottom:4px;}
-.value span{font-size:13px;color:var(--muted);}
-
-.contact{text-align:center;}
-.contact-box{background:var(--accent-grad);border-radius:16px;padding:44px 28px;color:#fff;}
-.contact-box h2{font-family:"Space Grotesk",sans-serif;font-size:26px;margin:0 0 10px;}
-.contact-box p{opacity:.92;margin:0 0 22px;font-size:15px;}
-.contact-box a.btn{display:inline-block;background:#fff;color:var(--blue-deep);padding:12px 26px;border-radius:8px;font-weight:600;font-size:14px;}
-.contact-box a.btn:hover{opacity:.92;}
-
-footer{padding:30px 0;border-top:1px solid var(--line);}
-footer .wrap{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;font-size:13px;color:var(--muted);}
-footer .brand{font-size:14px;}
-footer .brand img{width:22px;height:22px;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DS Tecnologia — soluções inteligentes para inventário de ativos em nuvem e acompanhamentoamento de infraestrutura.">
+  <title>DS Tecnologia | Inventário e Acompanhamento</title>
+  <style>
+    :root{
+      --bg:#080d18;--panel:#101a2b;--panel2:#142238;--line:rgba(173,194,226,.15);
+      --text:#f4f7fc;--muted:#a8b5c9;--blue:#4da3ff;--cyan:#39d5d1;
+      --green:#55dfaa;--radius:20px;--shadow:0 24px 70px rgba(0,0,0,.28)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(ellipse at 80% 0%,rgba(42,105,180,.18),transparent 34%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(8,13,24,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
+    .logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:#06111e;font-weight:950;font-size:18px;box-shadow:0 8px 28px rgba(57,213,209,.22)}
+    .brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px;font-weight:700;margin-top:-4px}
+    .navlinks{display:flex;align-items:center;gap:28px;color:#c5d0e0;font-size:14px}
+    .navlinks a:hover{color:#fff}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border-radius:11px;border:1px solid var(--line);font-weight:750;font-size:14px;cursor:pointer;transition:.2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(110deg,var(--blue),var(--cyan));color:#06111e;border:0;box-shadow:0 10px 28px rgba(57,160,220,.2)}
+    .btn-ghost{background:rgba(255,255,255,.035);color:var(--text)}
+    .menu-btn{display:none;background:none;color:white;border:1px solid var(--line);border-radius:9px;padding:8px 11px}
+    .hero{padding:94px 0 76px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:54px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(77,163,255,.3);background:rgba(77,163,255,.08);color:#9ccaff;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.5px}
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}
+    h1{font-size:clamp(40px,5vw,64px);line-height:1.06;letter-spacing:-2.4px;margin:22px 0}
+    h1 span{background:linear-gradient(100deg,#75b8ff,#4fe1d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:18px;color:var(--muted);max-width:590px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 25px}
+    .trust{display:flex;gap:20px;flex-wrap:wrap;color:#91a2ba;font-size:12px}
+    .trust span{display:flex;align-items:center;gap:7px}
+    .check{color:var(--green);font-weight:900}
+    .painel{background:linear-gradient(145deg,rgba(22,38,61,.96),rgba(11,20,35,.98));border:1px solid rgba(145,185,230,.2);border-radius:24px;padding:18px;box-shadow:var(--shadow);transform:perspective(1100px) rotateY(-5deg) rotateX(2deg)}
+    .dash-head{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 18px;border-bottom:1px solid var(--line);font-size:12px;color:#b8c7da}
+    .live{color:var(--green);font-size:11px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+    .stat{padding:14px;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:13px}
+    .stat small{color:#93a5bd;font-size:10px}
+    .stat strong{display:block;font-size:23px;margin-top:4px}
+    .stat em{font-style:normal;color:var(--green);font-size:10px}
+    .chart{height:145px;padding:12px 12px 4px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:14px;position:relative;overflow:hidden}
+    .chart-label{font-size:11px;color:#aab9cd}
+    .chart svg{width:100%;height:105px;margin-top:8px}
+    .dash-bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+    .mini{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:13px;padding:13px;font-size:11px;color:#aebbd0}
+    .mini strong{display:block;color:white;font-size:14px;margin-top:4px}
+    section{padding:82px 0}
+    .section-head{text-align:center;max-width:720px;margin:0 auto 42px}
+    .kicker{color:var(--cyan);font-size:12px;font-weight:850;letter-spacing:1.7px;text-transform:uppercase}
+    h2{font-size:clamp(30px,4vw,43px);line-height:1.15;letter-spacing:-1.2px;margin:12px 0}
+    .section-head p{color:var(--muted);font-size:16px;margin:0}
+    .products{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .product{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,rgba(19,34,55,.92),rgba(13,23,39,.95));position:relative;overflow:hidden}
+    .product:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-80px;top:-85px;background:rgba(77,163,255,.1);filter:blur(4px)}
+    .product.acompanhamento:before{background:rgba(57,213,209,.1)}
+    .product-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(77,163,255,.13);color:#83bdff;font-size:23px;margin-bottom:18px}
+    .acompanhamento .product-icon{background:rgba(57,213,209,.12);color:var(--cyan)}
+    .product h3{font-size:25px;margin:0 0 8px}
+    .product p{color:var(--muted);margin:0 0 18px}
+    .tag{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#9fcaff;font-weight:850}
+    .acompanhamento .tag{color:#76e5dc}
+    .feature-list{list-style:none;padding:0;margin:18px 0 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .feature-list li{font-size:13px;color:#c4cfde;display:flex;gap:8px}
+    .feature-list li:before{content:"✓";color:var(--green);font-weight:900}
+    .product-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:18px;border-top:1px solid var(--line)}
+    .product-foot small{color:var(--muted)}
+    .product-foot strong{font-size:18px}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .benefit{padding:23px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}
+    .benefit .symbol{font-size:22px;margin-bottom:12px}
+    .benefit h3{font-size:16px;margin:0 0 7px}
+    .benefit p{font-size:13px;color:var(--muted);margin:0}
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+    .price-card{padding:25px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}
+    .price-card.featured{border-color:rgba(57,213,209,.55);box-shadow:0 0 0 1px rgba(57,213,209,.1);background:linear-gradient(160deg,#142d3a,#101a2b)}
+    .price-card h3{margin:0;font-size:18px}
+    .price-card .desc{color:var(--muted);font-size:13px;min-height:42px}
+    .price{font-size:32px;font-weight:850;letter-spacing:-1px;margin:18px 0 4px}
+    .price small{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0}
+    .price-card ul{list-style:none;padding:0;margin:20px 0 24px;color:#c4cfde;font-size:13px}
+    .price-card li{padding:7px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+    .price-card li:before{content:"✓";color:var(--green);margin-right:9px}
+    .price-card .btn{width:100%}
+    .note{text-align:center;color:#8191a8;font-size:12px;margin-top:18px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:step}
+    .step{padding:24px;border-left:1px solid rgba(77,163,255,.45);background:linear-gradient(90deg,rgba(77,163,255,.07),transparent);border-radius:0 14px 14px 0}
+    .step b{color:var(--cyan);font-size:12px;letter-spacing:1px}
+    .step h3{margin:8px 0;font-size:17px}
+    .step p{color:var(--muted);font-size:13px;margin:0}
+    .cta{padding:54px;border-radius:25px;background:linear-gradient(110deg,#16416a,#12656b);display:flex;align-items:center;justify-content:space-between;gap:25px;box-shadow:var(--shadow)}
+    .cta h2{margin:0 0 10px}
+    .cta p{margin:0;color:#d1e5ef}
+    .cta .btn{background:white;color:#0a1a29;border:0;white-space:nowrap}
+    .faq{max-width:820px;margin:auto}
+    details{border-bottom:1px solid var(--line);padding:18px 2px}
+    summary{cursor:pointer;font-weight:750;list-style:none;display:flex;justify-content:space-between;gap:15px}
+    summary:after{content:"+";color:var(--cyan);font-size:20px}
+    details[open] summary:after{content:"−"}
+    details p{color:var(--muted);font-size:14px;margin:12px 0 0;max-width:740px}
+    footer{border-top:1px solid var(--line);padding:35px 0;color:#8e9eb4;font-size:12px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+    .footer-links{display:flex;gap:18px}
+    .footer-links a:hover{color:white}
+    @media(max-width:850px){
+      .navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#0c1422;padding:20px 25px;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}
+      .navlinks.open{display:flex}.menu-btn{display:block}.nav-actions .btn-ghost{display:none}
+      .hero-grid{grid-template-columns:1fr;gap:40px}.painel{transform:none;max-width:650px;margin:auto;width:100%}
+      .products{grid-template-columns:1fr}.benefits{grid-template-columns:1fr 1fr}.pricing{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}.cta{padding:35px;align-items:flex-start;flex-direction:column}
+    }
+    @media(max-width:520px){
+      .container{width:min(100% - 28px,1160px)}nav{height:68px}.navlinks{top:68px}
+      .hero{padding:65px 0 48px}h1{letter-spacing:-1.5px}.lead{font-size:16px}
+      .stats{grid-template-columns:1fr 1fr}.stat:last-child{display:none}
+      .feature-list{grid-template-columns:1fr}.benefits{grid-template-columns:1fr}
+      .product{padding:22px}.product-foot{align-items:flex-start;flex-direction:column}
+      section{padding:62px 0}.cta{padding:27px}
+    }
+  </style>
 </head>
 <body>
-
-<header>
-  <div class="wrap nav">
-    <div class="brand"><img src="assets/logo.png" alt="DS Tecnologia"> DS Tecnologia</div>
-    <nav class="navlinks">
-      <a href="#produtos">Produtos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
-    </nav>
-    <a class="nav-cta" href="https://www.contasfixas.com.br" target="_blank" rel="noopener">Conhecer o Contas Fixas</a>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="wrap">
-    <span class="eyebrow">DS Tecnologia</span>
-    <h1>Produtos digitais simples para resolver <span>problemas reais</span></h1>
-    <p>Desenvolvemos ferramentas online fáceis de usar, pensadas para o dia a dia das pessoas — sem complicação, sem enrolação.</p>
-  </div>
-</section>
-
-<section id="produtos">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag">Nossos produtos</span>
-      <h2>O que estamos construindo</h2>
-      <p>Cada produto nasce de um problema real que já vivemos na pele.</p>
+  <header class="topbar">
+    <div class="container">
+      <nav>
+        <a class="brand" href="#inicio" aria-label="DS Tecnologia início">
+          <span class="logo">DS</span><span>DS TECNOLOGIA<small>TECNOLOGIA QUE SIMPLIFICA</small></span>
+        </a>
+        <div class="navlinks" id="navlinks">
+          <a href="#solucoes">Soluções</a><a href="#beneficios">Benefícios</a><a href="#planos">Planos</a><a href="#sobre">Como funciona</a><a href="#contato">Contato</a>
+        </div>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="#planos">Conhecer planos</a>
+          <a class="btn btn-primary" href="#contato">Fale conosco</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+        </div>
+      </nav>
     </div>
-    <div class="products">
-      <div class="product-card">
-        <div class="product-icon">💰</div>
-        <h3>Contas Fixas</h3>
-        <p>Controle completo das suas despesas fixas mensais, com cálculo automático do total e comparativo entre meses — simples o suficiente pra usar todo mês, sem esforço.</p>
-        <span class="product-price">A partir de R$20 — pagamento único</span>
-        <a class="product-link" href="https://www.contasfixas.com.br" target="_blank" rel="noopener">Conhecer o produto →</a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> TECNOLOGIA PARA SUA EMPRESA</div>
+          <h1>Mais controle.<br><span>Mais disponibilidade.</span><br>Menos complicação.</h1>
+          <p class="lead">Conheça as soluções DS Tecnologia para inventariar seus ativos em nuvem e acompanhar a saúde da sua infraestrutura em um só lugar.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#solucoes">Conhecer as soluções <span>→</span></a>
+            <a class="btn btn-ghost" href="#contato">Solicitar uma apresentação</a>
+          </div>
+          <div class="trust">
+            <span><b class="check">✓</b> Visibilidade da infraestrutura</span>
+            <span><b class="check">✓</b> Alertas e relatórios</span>
+            <span><b class="check">✓</b> Gestão simplificada</span>
+          </div>
+        </div>
+        <div class="painel" aria-label="Ilustração de painel de acompanhamentoamento">
+          <div class="dash-head"><span>VISÃO GERAL DA INFRAESTRUTURA</span><span class="live">● SISTEMA EM FUNCIONAMENTO</span></div>
+          <div class="stats">
+            <div class="stat"><small>Ativos cadastrados</small><strong>248</strong><em>↑ visão centralizada</em></div>
+            <div class="stat"><small>Disponibilidade</small><strong>99,9%</strong><em>● dentro da meta</em></div>
+            <div class="stat"><small>Alertas ativos</small><strong>03</strong><em>acompanhamento contínuo</em></div>
+          </div>
+          <div class="chart">
+            <div class="chart-label">Disponibilidade dos serviços · últimas 24 horas</div>
+            <svg viewBox="0 0 520 110" preserveAspectRatio="none" role="img" aria-label="Gráfico ilustrativo de disponibilidade">
+              <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#39d5d1" stop-opacity=".32"/><stop offset="1" stop-color="#39d5d1" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 30 L35 28 L70 31 L105 26 L140 29 L175 24 L210 28 L245 25 L280 27 L315 22 L350 26 L385 23 L420 25 L455 19 L490 22 L520 18 L520 110 L0 110Z" fill="url(#area)"/>
+              <path d="M0 30 L35 28 L70 31 L105 26 L140 29 L175 24 L210 28 L245 25 L280 27 L315 22 L350 26 L385 23 L420 25 L455 19 L490 22 L520 18" fill="none" stroke="#43ddd0" stroke-width="3" stroke-linecap="round"/>
+              <path d="M0 55H520 M0 82H520" stroke="rgba(180,205,230,.12)" stroke-dasharray="4 5"/>
+            </svg>
+          </div>
+          <div class="dash-bottom">
+            <div class="mini">Ambientes acompanhados<strong>Produção · Homologação</strong></div>
+            <div class="mini">Última atualização<strong>Há poucos segundos</strong></div>
+          </div>
+          <div style="font-size:9px;color:#74869e;text-align:right;margin:10px 3px 0">Exemplo ilustrativo da interface</div>
+        </div>
       </div>
-      <div class="product-card soon">
-        <span class="badge-soon">Em breve</span>
-        <div class="product-icon" style="opacity:.6">🚀</div>
-        <h3>Novo produto</h3>
-        <p>Já estamos trabalhando no próximo produto da DS Tecnologia. Ainda sem data definida — em breve contamos mais.</p>
+    </section>
+
+    <section id="solucoes">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Nossas soluções</div><h2>Ferramentas para cuidar da sua infraestrutura</h2><p>Escolha a solução ideal para ter mais visibilidade, organização e previsibilidade na operação de TI.</p></div>
+        <div class="products">
+          <article class="product">
+            <div class="product-icon">▦</div><div class="tag">Gestão de ativos e computação em nuvem</div>
+            <h3>DS Inventário</h3>
+            <p>Centralize informações dos seus ativos de TI e recursos em nuvem. Tenha uma visão organizada do ambiente e facilite decisões de gestão.</p>
+            <ul class="feature-list">
+              <li>Inventário de instâncias em nuvem</li><li>Visualização por conta e região</li><li>Informações de configuração</li><li>Histórico do inventário</li><li>Relatórios para exportação</li><li>Identificação de recursos</li>
+            </ul>
+            <div class="product-foot"><div><small>Planos a partir de</small><br><strong>R$ 39,90 <small>/mês</small></strong></div><a class="btn btn-primary" href="#contato">Tenho interesse →</a></div>
+          </article>
+          <article class="product acompanhamento">
+            <div class="product-icon">⌁</div><div class="tag">Disponibilidade e acompanhamento da infraestrutura</div>
+            <h3>DS Monitoramento</h3>
+            <p>Acompanhe sites, serviços e infraestrutura. Identifique indisponibilidades e receba alertas para agir com mais rapidez.</p>
+            <ul class="feature-list">
+              <li>Acompanhamento de sites HTTP/HTTPS</li><li>Verificação de portas TCP</li><li>Acompanhamento de servidores</li><li>Alertas de ocorrências</li><li>Histórico de disponibilidade</li><li>Relatórios de nível de serviço</li>
+            </ul>
+            <div class="product-foot"><div><small>Planos a partir de</small><br><strong>R$ 19,90 <small>/mês</small></strong></div><a class="btn btn-primary" href="#contato">Tenho interesse →</a></div>
+          </article>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="about" id="sobre">
-  <div class="wrap">
-    <div>
-      <h2>Sobre a DS Tecnologia</h2>
-      <p>Somos uma empresa de tecnologia focada em criar produtos digitais enxutos, que resolvem um problema específico muito bem — em vez de tentar fazer tudo ao mesmo tempo.</p>
-      <p>Acreditamos que a melhor ferramenta é aquela que a pessoa realmente usa todo mês, sem complicação. É esse o padrão que seguimos em tudo o que lançamos.</p>
-    </div>
-    <div class="values">
-      <div class="value"><strong>Simplicidade</strong><span>Interfaces diretas, sem curva de aprendizado.</span></div>
-      <div class="value"><strong>Preço justo</strong><span>Pagamento único, sem mensalidades escondidas.</span></div>
-      <div class="value"><strong>Uso real</strong><span>Construído a partir de problemas que vivemos de verdade.</span></div>
-      <div class="value"><strong>Evolução contínua</strong><span>Cada produto melhora com o retorno de quem usa.</span></div>
-    </div>
-  </div>
-</section>
+    <section id="beneficios">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Por que DS Tecnologia?</div><h2>Informação clara para decisões melhores</h2><p>Reduza tarefas manuais e tenha dados importantes da operação organizados em uma experiência simples.</p></div>
+        <div class="benefits">
+          <div class="benefit"><div class="symbol">◉</div><h3>Visão centralizada</h3><p>Consulte informações importantes sem depender de planilhas espalhadas e controles manuais.</p></div>
+          <div class="benefit"><div class="symbol">⚡</div><h3>Mais agilidade</h3><p>Encontre dados e identifique situações que merecem atenção com menos esforço.</p></div>
+          <div class="benefit"><div class="symbol">⌁</div><h3>Alertas e histórico</h3><p>Acompanhe ocorrências relevantes e consulte registros para apoiar análises e solução de problemas.</p></div>
+          <div class="benefit"><div class="symbol">▤</div><h3>Relatórios úteis</h3><p>Organize informações para auditorias, acompanhamento e comunicação com a equipe.</p></div>
+          <div class="benefit"><div class="symbol">☁</div><h3>Foco em nuvem</h3><p>Comece com os provedores e recursos suportados pelo plano contratado.</p></div>
+          <div class="benefit"><div class="symbol">♧</div><h3>Experiência simples</h3><p>Interfaces objetivas para facilitar a rotina de profissionais e equipes de TI.</p></div>
+        </div>
+      </div>
+    </section>
 
-<section class="contact" id="contato">
-  <div class="wrap">
-    <div class="contact-box">
-      <h2>Fale com a gente</h2>
-      <p>Dúvidas, sugestões ou parcerias — é só mandar um e-mail.</p>
-      <a class="btn" href="mailto:sstecnologia.net@gmail.com">sstecnologia.net@gmail.com</a>
+    <section id="planos">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Planos e preços</div><h2>Escolha o plano adequado à sua operação</h2><p>Planos ilustrativos para apresentar o modelo comercial. Os limites e valores finais podem ser ajustados antes do lançamento.</p></div>
+        <div class="pricing">
+          <article class="price-card"><h3>Inicial</h3><p class="desc">Para profissionais e pequenas operações.</p><div class="price">R$ 19,90 <small>/ mês</small></div><ul><li>Funcionalidades essenciais</li><li>Painel de acompanhamento</li><li>Relatórios básicos</li><li>Atendimento por e-mail</li></ul><a class="btn btn-ghost" href="#contato">Escolher plano</a></article>
+          <article class="price-card featured"><div class="tag">MAIS RECURSOS</div><h3>Profissional</h3><p class="desc">Para equipes que precisam de mais visibilidade.</p><div class="price">R$ 49,90 <small>/ mês</small></div><ul><li>Mais ativos ou pontos de acompanhamento</li><li>Histórico ampliado</li><li>Alertas e notificações</li><li>Relatórios detalhados</li></ul><a class="btn btn-primary" href="#contato">Tenho interesse</a></article>
+          <article class="price-card"><h3>Empresarial</h3><p class="desc">Para empresas com ambientes maiores.</p><div class="price">Sob consulta</div><ul><li>Limites personalizados</li><li>Mais usuários</li><li>Relatórios avançados</li><li>Atendimento prioritário</li></ul><a class="btn btn-ghost" href="#contato">Falar com a equipe comercial</a></article>
+        </div>
+        <p class="note">Preços e funcionalidades sujeitos à validação comercial. A contratação e a cobrança recorrente ainda precisam ser integradas.</p>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Comece em poucas etapas</div><h2>Da configuração à visibilidade</h2><p>Uma jornada simples para começar a organizar e acompanhar seu ambiente.</p></div>
+        <div class="steps">
+          <div class="step"><b>01 / CADASTRO</b><h3>Crie sua conta</h3><p>Cadastre sua empresa e escolha a solução adequada para sua necessidade.</p></div>
+          <div class="step"><b>02 / CONFIGURAÇÃO</b><h3>Conecte ou cadastre seus ativos</h3><p>Configure as integrações disponíveis ou adicione os itens que deseja acompanhar.</p></div>
+          <div class="step"><b>03 / ACOMPANHAMENTO</b><h3>Acesse seu painel</h3><p>Consulte inventário, indicadores, alertas e relatórios conforme seu plano.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="cta">
+          <div><div class="kicker" style="color:#9df4e8">DS TECNOLOGIA</div><h2>Vamos conhecer seu ambiente?</h2><p>Conte o que você precisa inventariar ou acompanhamentoar. Nossa equipe pode ajudar a encontrar o melhor caminho.</p></div>
+          <a class="btn" id="contactBtn" href="mailto:contato@seudominio.com.br?subject=Interesse%20nas%20solu%C3%A7%C3%B5es%20DS%20Tecnologia">Fale conosco →</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:10px">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Dúvidas frequentes</div><h2>Perguntas frequentes</h2></div>
+        <div class="faq">
+          <details><summary>Os produtos já estão disponíveis para contratação?</summary><p>Esta página é um protótipo visual para apresentar a proposta dos produtos. Antes do lançamento, será necessário concluir o desenvolvimento, validar as integrações, configurar os planos e ativar o processo de contratação.</p></details>
+          <details><summary>O DS Inventário terá integração com AWS, GCP e OCI?</summary><p>A proposta é começar com uma integração inicial e ampliar gradualmente para outros provedores. A disponibilidade de cada integração será informada na página do produto e nos planos.</p></details>
+          <details><summary>O DS Monitoramento consegue acompanhar servidores?</summary><p>A proposta inclui acompanhamentoamento de sites e serviços e, em uma etapa posterior, métricas de servidores por meio de agentes ou integrações específicas.</p></details>
+          <details><summary>Como funciona a cobrança?</summary><p>A proposta comercial é trabalhar com assinaturas mensais. Os meios de pagamento, renovação, cancelamento e emissão de documentos deverão ser configurados antes da operação comercial.</p></details>
+          <details><summary>Posso solicitar um plano para minha empresa?</summary><p>Sim. Use o canal de contato para descrever o tamanho do ambiente, os recursos que deseja acompanhar e as necessidades da sua equipe.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="#inicio"><span class="logo">DS</span><span>DS TECNOLOGIA<small>TECNOLOGIA QUE SIMPLIFICA</small></span></a>
+      <span>© <span id="year"></span> DS Tecnologia. Todos os direitos reservados.</span>
+      <div class="footer-links"><a href="#solucoes">Soluções</a><a href="#planos">Planos</a><a href="#contato">Contato</a></div>
     </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="brand" style="display:flex;align-items:center;gap:8px;"><img src="assets/logo.png" alt="DS Tecnologia" style="border-radius:50%;"> DS Tecnologia</div>
-    <div>© <span id="year"></span> DS Tecnologia. Todos os direitos reservados.</div>
-  </div>
-</footer>
-
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  </footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navlinks = document.getElementById('navlinks');
+    menuBtn.addEventListener('click', () => navlinks.classList.toggle('open'));
+    navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navlinks.classList.remove('open')));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
